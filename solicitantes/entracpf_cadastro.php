@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $registro = $result->fetch_assoc();
 
         if (!$registro) { // chama tipo de cadastro para registro novo
-            header('location: /mudas/cadastro_solicitante.php');
+            header('location: /mudas/solicitantes/cadastro_solicitante.php');
         } else {
             // aviso de cpf já cadastrado
             $c_erro = 'CPF já cadastrado, favor verificar seus dados ou entrar em contato com a secretaria de meio ambiente.';
