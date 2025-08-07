@@ -33,11 +33,41 @@ $msg_erro = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    do {
-        // faço a Leitura da tabela com sql
-        $c_sql = "Insert into funcionarios (nome,telefone,sexo,data_nasc,status)" .
-            "Value ('$c_nome', '$c_telefone', '$c_sexo', '$c_data','S')";
+    // get dos campos do formulário
+    $c_nome = $_POST['nome'];
+    $c_telefone = $_POST['telefone']; 
+    $c_endereco = $_POST['endereco'];
+    $c_bairro = $_POST['bairro'];
+    $c_cep = $_POST['cep'];
+    $c_cidade = $_POST['cidade'];
+    $c_estado = $_POST['estado'];
+    $c_cpf = $_SESSION['cpf'];
+    $c_email = $_POST['email'];
+    $c_endereco_plantio = $_POST['endereco_plantio'];
+    $c_bairro_plantio = $_POST['bairro_plantio'];
+    $c_cep_plantio = $_POST['cep_plantio'];
+    $c_cidade_plantio = $_POST['cidade_plantio'];   
+    $c_estado_plantio = $_POST['estado_plantio'];
+    $c_area = $_POST['area'];
+    $c_local_plantio = $_POST['local'];
+    $c_condicoes_luz = $_POST['luz'];   
+    $c_irrigacao = $_POST['irrigacao'];
 
+
+    do {
+        // verifico se local de plantio é o mesmo do endereço do solicitante
+        if ($c_local_plantio == 'N') {
+            if (empty($c_endereco_plantio) || empty($c_bairro_plantio) || empty($c_cidade_plantio) || empty($c_cep_plantio) || empty($c_estado_plantio)) {
+                $msg_erro = "Preencha todos os campos do endereço do plantio.";
+                break;
+            }
+        }
+        //isnerção no banco de dados
+        $c_sql = "INSERT INTO solicitantes (nome, telefone, endereco, bairro, cep, cidade, estado, cpf, email, endereco_plantio,
+         bairro_plantio, cep_plantio, cidade_plantio, estado_plantio, area, local_plantio, condicoes_luz, irrigacao) 
+                  VALUES ('$c_nome', '$c_telefone', '$c_endereco', '$c_bairro', '$c_cep', '$c_cidade', '$c_estado', '$c_cpf', '$c_email',
+                   '$c_endereco_plantio', '$c_bairro_plantio', '$c_cep_plantio', '$c_cidade_plantio', '$c_estado_plantio', '$c_area', '$c_local_plantio', 
+                   '$c_condicoes_luz', '$c_irrigacao')";
         $result = $conection->query($c_sql);
         // verifico se a query foi correto
         if (!$result) {
@@ -107,10 +137,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ?>
         <form method="post">
             <hr>
+            <p><h5>Dados do Solicitante</p></h5>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Completo (*)</label>
                 <div class="col-sm-6">
                     <input type="text" maxlength="120" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Telefone (*)</label>
+                <div class="col-sm-2">
+                    <input type="text" maxlength="15" class="form-control" name="telefone" value="<?php echo $c_telefone; ?>" onkeyup="handlePhone(event)" required>
                 </div>
             </div>
             <div class="row mb-3">
@@ -172,6 +209,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </select>
                 </div>
             </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">E-mail</label>
+                <div class="col-sm-4">
+                    <input type="email" maxlength="120" class="form-control" name="email" value="<?php echo $c_email; ?>">
+                </div>
+            </div>
+            </hr>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Irrigação no local? (*)</label>
+                <div class="col-sm-2">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="irrigacao" id="irrigacao_sim" value="S" checked required>
+                            <label class="form-check-label" for="local_sim">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="irrigacao" id="irrigacao_nao" value="N">
+                            <label class="form-check-label" for="local_nao">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </hr>
             <div class="row mb-3">
                 <div class="col-sm-6">
@@ -182,6 +246,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label class="col-sm-3 col-form-label">Área do Plantio (m²) (*)</label>
                 <div class="col-sm-2">
                     <input type="number" step="0.01" class="form-control" name="area" value="<?php echo $c_area; ?>" required>
+                </div>
+                <label class="col-sm-2 col-form-label">Condição de luz no local (*)</label>
+                <div class="col-sm-2">
+                    <select class="form-select form-select-lg mb-1" id="luz" name="luz" required>
+                        <option></option>
+                        <option>Sombra</option>
+                        <option>Meia Sombra</option>
+                        <option>Sol Pleno</option>
+                    </select>
                 </div>
             </div>
             <div class="row mb-3">
@@ -206,6 +279,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <hr>
+            <p><h5>Endereço do Plantio : (preencher somente se for diferente do Endereço do solicitante)</p></h5>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Endereço Plantio (*)</label>
                 <div class="col-sm-6">
@@ -263,38 +337,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </select>
                 </div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Condição de luz no local (*)</label>
-                <div class="col-sm-2">
-                    <select class="form-select form-select-lg mb-1" id="luz" name="luz" required>
-                        <option></option>
-                        <option>Sombra</option>
-                        <option>Meia Sombra</option>
-                        <option>Sol Pleno</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Irrigação no local? (*)</label>
-                <div class="col-sm-2">
 
-                    <div class="col-sm-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="irrigacao" id="irrigacao_sim" value="S" checked required>
-                            <label class="form-check-label" for="local_sim">
-                                Sim
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="irrigacao" id="irrigacao_nao" value="N">
-                            <label class="form-check-label" for="local_nao">
-                                Não
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <hr>
             <?php
             if (!empty($msg_gravou)) {
@@ -314,7 +358,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <div class="offset-sm-0 col-sm-3">
                     <button type="submit" class="btn btn-primary"><span class='glyphicon glyphicon-floppy-saved'></span> Salvar</button>
-                    <a class='btn btn-danger' href='/funcionarios/usuarios/usuarios_lista.php'><span class='glyphicon glyphicon-remove'></span> Cancelar</a>
+                    <a class='btn btn-danger' href='/mudas/index.php'><span class='glyphicon glyphicon-remove'></span> Cancelar</a>
                 </div>
 
             </div>
