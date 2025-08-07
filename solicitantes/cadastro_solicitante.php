@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // get dos campos do formulário
     $c_nome = $_POST['nome'];
-    $c_telefone = $_POST['telefone']; 
+    $c_telefone = $_POST['telefone'];
     $c_endereco = $_POST['endereco'];
     $c_bairro = $_POST['bairro'];
     $c_cep = $_POST['cep'];
@@ -46,11 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $c_endereco_plantio = $_POST['endereco_plantio'];
     $c_bairro_plantio = $_POST['bairro_plantio'];
     $c_cep_plantio = $_POST['cep_plantio'];
-    $c_cidade_plantio = $_POST['cidade_plantio'];   
+    $c_cidade_plantio = $_POST['cidade_plantio'];
     $c_estado_plantio = $_POST['estado_plantio'];
     $c_area = $_POST['area'];
     $c_local_plantio = $_POST['local'];
-    $c_condicoes_luz = $_POST['luz'];   
+    $c_condicoes_luz = $_POST['luz'];
     $c_irrigacao = $_POST['irrigacao'];
 
 
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             die("Erro ao Executar Sql!!" . $conection->connect_error);
         }
         $msg_gravou = "Dados Gravados com Sucesso!!";
-        header('location: /funcionarios/cadastro/cadastro_lista.php');
+        header('location: /mudas/solicitantes/finalizar.php');
     } while (false);
 }
 
@@ -125,19 +125,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <?php
         if (!empty($msg_erro)) {
-            echo '
-            <div class="alert alert-warning" role="alert">
-                <div style="padding-left:15px;">
-                    
+            echo "
+            <div class='alert alert-warning' role='alert'>
+                <div style='padding-left:15px;'>
+                    <h5><img Align='left' src='\mudas\imagens\aviso.png' alt='30' height='35'> $msg_erro</h5>
                 </div>
-                <h4><img Align="left" src="\funcionarios\imagens\aviso.png" alt="30" height="35"> $msg_erro</h4>
+                
             </div>
-            ';
+            ";
         }
         ?>
         <form method="post">
             <hr>
-            <p><h5>Dados do Solicitante</p></h5>
+            <p>
+            <h5>Dados do Solicitante</p>
+            </h5>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Completo (*)</label>
                 <div class="col-sm-6">
@@ -153,26 +155,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Endereço (*)</label>
                 <div class="col-sm-6">
-                    <input type="text" maxlength="120" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
+                    <input type="text" maxlength="120" class="form-control" name="endereco" value="<?php echo $c_endereco; ?>" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Bairro (*)</label>
                 <div class="col-sm-6">
-                    <input type="text" maxlength="120" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
+                    <input type="text" maxlength="120" class="form-control" name="bairro" value="<?php echo $c_bairro; ?>" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Cidade (*)</label>
                 <div class="col-sm-6">
-                    <input type="text" maxlength="120" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
+                    <input type="text" maxlength="120" class="form-control" name="cidade" value="<?php echo $c_cidade; ?>" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Cep (*)</label>
                 <div class="col-sm-2">
-                    <input type="text" maxlength="120" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
+                    <input type="text" maxlength="120" class="form-control" name="cep" value="<?php echo $c_cep; ?>" required>
                 </div>
                 <label class="col-sm-2 col-form-label">Estado (*)</label>
                 <div class="col-sm-2">
@@ -216,6 +218,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
             </hr>
+            <p>
+            <h5>Informações sobre o Plantio</p>
+            </h5>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Irrigação no local? (*)</label>
                 <div class="col-sm-2">
@@ -237,11 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
             </hr>
-            <div class="row mb-3">
-                <div class="col-sm-6">
-                    <p><strong>Informações sobre o Plantio</strong></p>
-                </div>
-            </div>
+
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Área do Plantio (m²) (*)</label>
                 <div class="col-sm-2">
@@ -279,7 +280,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <hr>
-            <p><h5>Endereço do Plantio : (preencher somente se for diferente do Endereço do solicitante)</p></h5>
+            <p>
+            <h5>Endereço do Plantio : (preencher somente se for diferente do Endereço do solicitante)</p>
+            </h5>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Endereço Plantio (*)</label>
                 <div class="col-sm-6">

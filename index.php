@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION['newsession'] = True;
+$_SESSION['controle']='S';
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@ $_SESSION['newsession'] = True;
             <div class="container-fluid" class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
                 <br>
                 <a id="solicitante" class="btn btn-success" href="/mudas/solicitantes/entracpf_cadastro.php"><span class="glyphicon glyphicon-edit"></span> Cadastro de Solicitantes</a>
-                <a id="agendamento" class="btn btn-primary" href="/mudas/entracpf_agenda.php"><span class="glyphicon glyphicon-calendar"></span> Agendamento para Retirada de Mudas</a>
+                <a id="agendamento" class="btn btn-primary" href="/mudas/solicitantes/entracpf_agenda.php"><span class="glyphicon glyphicon-calendar"></span> Agendamento para Retirada de Mudas</a>
 
             </div>
         </nav>
