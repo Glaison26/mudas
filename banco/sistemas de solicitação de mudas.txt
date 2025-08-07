@@ -1,0 +1,135 @@
+sistemas de solicitação de mudas
+
+Pagina inicial
+
+apresentação da plataforma e regras para cadastro e retira
+
+fluxo 1 - Cadastro de solicitantes
+
+Etapa 1 / pagina 2
+
+Informar CFP
+
+1 - Ações:Verificar se cpf já foi cadastrado.
+
+1.1 Se já foi cadastrado notificar ao usuário solicitante e permanecer na pagina 2
+
+1.2 Se não existir cadastro consistir a validade do cpf
+
+1.2.3 - Se CPF inválido notificar o usuário solicitante e permanecer na página 2
+
+1.2.4. Se Cpf for válido carregar formulário de preenchimento dos dados do solicitante
+
+
+2 - Etapa2 / formulário de dados do solicitante
+
+Campos do formulário :
+
+Tabela de solicitantes:
+
+Nome completo 
+definição :String 
+tipo :obrigatório
+
+Telefone 
+definição :String;
+tipo :obrigatório
+
+e-mail
+definição :string
+tipo :obrigatório
+
+Informações do plantio
+
+área disponível em metros Quadrados
+definição : string
+tipo :obrigatório
+
+local de plantio igual ao endereço informado
+definição string
+tipo:obrigatório
+scopo (S)im ou (N)ão
+
+endereço de plantio
+definição : string
+tipo : obrigatório e editavel se campo (local de plantio igual ao endereço informado igual a não)
+
+Condições de Luz (sombra, meia sombra, sol pleno)
+definição :string
+tipo :obrigatório
+
+Há disponibilidade de irrigação no local
+definição :string
+tipo :obrigatório (sim ou Não)
+
+
+endereço (rua, bairro, cidade, cep, estado)
+definição : string
+tipo : obrigatório
+
+Ações no formulário
+
+- consistência de e-mail
+- salvar informações em banco de dados
+
+fluxo 2 - agendamento de retirada de muda
+
+pagina 1
+
+Entrar om cpf
+
+Ações : Verificar se cpf do solicitante está cadastrado. Caso não esteja notificar o usuário e não prosseguir com a agenda
+
+Caso o Cpf estiver cadastrado seguir para o formulário de agendamento de retirada de muda.
+
+
+
+Tabela agenda
+
+data do agendamento
+definição : date
+tipo : obrigatório
+
+Hora do Agendamento
+definição : hora
+tipo : obrigatório 
+obs : os horários disponíveis serão 09 hs as 15 hs de 1 em 1 hora
+
+Número de mudas
+definição : numérico inteiro
+tipo : obrigatório
+obs : os quantitativos devem ser de 1 no máximo 3 unidades
+
+Ações :
+
+1 . Verificar que se houve retirada de muda no últimos 90 dias. se houve retirada notificar o usuário e não salvar o cpf
+
+2 . enviar email para o solicitante com a confirmação do agendamento.
+
+3. Salvar as informações
+
+
+
+
+
+pagina 2 - informe do cpf do solicitante
+
+1. Ações : Verificar se cpf já foi cadastrado
+
+1.1 Se CPF não cadastrado notificar usuário e solicitar que faça o cadastro
+
+1.2 Se CPF cadastrado ir para formulário de agenda de retirada
+
+1.3 Dados do formulário de agenda de retirada
+
+
+
+
+
+
+
+
+
+
+
+
