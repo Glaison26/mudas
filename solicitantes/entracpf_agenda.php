@@ -34,9 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
-
-
-
+<!DOCTYPE html>
+<html lang="en">
 <body>
 
 
@@ -65,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
             <hr>
-
             <div class="row mb-3">
                 <div class="offset-sm-0 col-sm-3">
                     <br>
