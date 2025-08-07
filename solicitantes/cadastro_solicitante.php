@@ -14,14 +14,14 @@ $c_telefone = "";
 $c_endereco = "";
 $c_bairro = "";
 $c_cep = "";
-$c_cidade = ""; 
+$c_cidade = "";
 $c_estado = "";
-$c_cpf = "";        
+$c_cpf = "";
 $c_email = "";
 $c_endereco_plantio = "";
 $c_bairro_plantio = "";
 $c_cep_plantio = "";
-$c_cidade_plantio = ""; 
+$c_cidade_plantio = "";
 $c_estado_plantio = "";
 $c_area = "";
 $c_local_plantio = "";
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container -my5">
 
     <body>
-       
+
         <div class='alert alert-info' role='alert'>
             <div style="padding-left:15px;">
                 <img Align="left" src="\mudas\imagens\escrita.png" alt="30" height="35">
@@ -106,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         ?>
         <form method="post">
-
             <hr>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Completo (*)</label>
@@ -126,8 +125,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" maxlength="120" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
                 </div>
             </div>
-
-           
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Cidade (*)</label>
                 <div class="col-sm-6">
@@ -140,7 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-sm-2">
                     <input type="text" maxlength="120" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
                 </div>
-                
                 <label class="col-sm-2 col-form-label">Estado (*)</label>
                 <div class="col-sm-2">
                     <select class="form-select form-select-lg mb-3" id="estado" name="estado" required>
@@ -175,9 +171,131 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     </select>
                 </div>
+            </div>
+            </hr>
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <p><strong>Informações sobre o Plantio</strong></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Área do Plantio (m²) (*)</label>
+                <div class="col-sm-2">
+                    <input type="number" step="0.01" class="form-control" name="area" value="<?php echo $c_area; ?>" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <hr>
+
+                <label class="col-sm-3 col-form-label">O local de plantio é o mesmo do endereço informado?</label>
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="local" id="local_sim" value="S" checked>
+                        <label class="form-check-label" for="local_sim">
+                            Sim
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="local" id="local_nao" value="N">
+                        <label class="form-check-label" for="local_nao">
+                            Não
+                        </label>
+                    </div>
+                </div>
 
             </div>
 
+            <hr>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Endereço Plantio (*)</label>
+                <div class="col-sm-6">
+                    <input type="text" maxlength="120" class="form-control" name="endereco_plantio" value="<?php echo $c_endereco_plantio; ?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Bairro Plantio (*)</label>
+                <div class="col-sm-6">
+                    <input type="text" maxlength="120" class="form-control" name="bairro_plantio" value="<?php echo $c_bairro_plantio; ?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Cidade Plantio (*)</label>
+                <div class="col-sm-6">
+                    <input type="text" maxlength="120" class="form-control" name="cidade_plantio" value="<?php echo $c_cidade_plantio; ?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Cep Plantio (*)</label>
+                <div class="col-sm-2">
+                    <input type="text" maxlength="120" class="form-control" name="cep_plantio" value="<?php echo $c_cep_plantio; ?>">
+                </div>
+                <label class="col-sm-2 col-form-label">Estado Plantio (*)</label>
+                <div class="col-sm-2">
+                    <select class="form-select form-select-lg mb-3" id="estado_plantio" name="estado_plantio">
+                        <option></option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapa</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceara</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espirito Santo</option>
+                        <option value="GO">Goias</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option selected value="MG">Minas Gerais</option>
+                        <option value="PA">Para</option>
+                        <option value="PB">Paraiba</option>
+                        <option value="PR">Parana</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piaui</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondonia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantis</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Condição de luz no local (*)</label>
+                <div class="col-sm-2">
+                    <select class="form-select form-select-lg mb-1" id="luz" name="luz" required>
+                        <option></option>
+                        <option>Sombra</option>
+                        <option>Meia Sombra</option>
+                        <option>Sol Pleno</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Irrigação no local? (*)</label>
+                <div class="col-sm-2">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="irrigacao" id="irrigacao_sim" value="S" checked required>
+                            <label class="form-check-label" for="local_sim">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="irrigacao" id="irrigacao_nao" value="N">
+                            <label class="form-check-label" for="local_nao">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
             <?php
             if (!empty($msg_gravou)) {
                 echo "
