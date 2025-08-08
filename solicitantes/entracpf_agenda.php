@@ -1,9 +1,8 @@
 <?php
-include("..\conexao.php");
-
 session_start();
 include("..\lib_gop.php");
 include("..\interface.php");
+include("..\conexao.php");
 
 $c_erro = "";
 $c_cpf = "";
@@ -24,6 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $registro = $result->fetch_assoc();
 
         if ($registro) { // chama tipo de cadastro para registro novo
+            // verifico se houve agendamento do solicitante a menos de 90 dias
+            $c_sql = 'SELECT * FROM agenda WHERE id_solicitante=' . $registro['id'] . ' AND data >= DATE_SUB(CURDATE(), INTERVAL 90 DAY)';
+            $result = $conection->query($c_sql);
+            if ($result->num_rows > 0) {
+                $c_erro = 'Já existe um agendamento para retirada realizado a menos de 90 dias. Favor verificar.';
+                break;
+            }
+            $_SESSION['id_solicitante'] = $registro['id'];
+            $_SESSION['nome'] = $registro['nome'];
+            $_SESSION['email'] = $registro['email'];
             header('location: /mudas/solicitantes/agenda.php');
         } else {
             // aviso de cpf já cadastrado
@@ -36,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <body>
 
 
@@ -54,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <div class="container">
                     <div class="alert alert-success">
-                        <strong>Digite o CPF do solicitante para Agendamento </strong>
+                        <strong>Digite o CPF do solicitante para agendamento de retirada de Muda. Prazo minimo para nova retirada é de 90 dias.</strong>
                     </div>
                 </div>
                 <hr>
