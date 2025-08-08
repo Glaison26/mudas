@@ -1,16 +1,27 @@
 <?php
 session_start(); // icicio de session
 include("..\interface.php");
+// rotina para envio de email
+if (!isset($_SESSION['newsession'])) {
+    die('Acesso não autorizado!!!');
+}
 $c_email = $_SESSION['email'];
+$c_dia = $_SESSION['data'];
+$c_data = date("d-m-Y", strtotime(str_replace('/', '-', $c_dia)));
+$c_hora = $_SESSION['horario'];
 // chamo o envio de email ordem de serviço gerada
 if (filter_var($c_email, FILTER_VALIDATE_EMAIL)) {
-    $c_assunto = "Abertura de Ordem  de Serviço no GOP";
-    $c_body = "teste de envio de email";
+    $c_assunto = "Sua retirada de muda foi agendada com sucesso!<br>";
+    $c_body = "E-mail de confirmação.<br><br>";    
+    $c_body .="Sua Retirada foi agendada pra o dia " . $c_data . " às " . $_SESSION['horario'] . "hs.<br><br>";
+    $c_body .= "Obrigado por utilizar nossos serviços!<br><br>";
+    $c_body .= "Atenciosamente,<br><br>";
+    $c_body .= "Secretaria Municipal de Meio Ambiente do Municipio de Sabará.<br>";
     include('../email.php');
 }
-
 ?>
 
+<!-- front-end da página de finalização -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +35,7 @@ if (filter_var($c_email, FILTER_VALIDATE_EMAIL)) {
         <div class="row mb-3">
             <div class="container">
                 <div class="alert alert-secondary">
-                    <h3><strong>Sua Retirada de Muda foi agendada com sucesso para do dia <?php echo $c_dia ?> às <?php echo $c_hora ?>hs.!!</strong></h3>
+                    <h3><strong>Sua Retirada de Muda foi agendada com sucesso para do dia <?php echo $c_data ?> às <?php echo $c_hora ?>hs.!!</strong></h3>
                 </div>
             </div>
         </div>

@@ -23,25 +23,24 @@ try {
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'glaison26.queiroz@gmail.com';                     //SMTP username
-    $mail->Password   = 'ckcf ndns wvoa kehu';                               //SMTP password
+    $mail->Password   = 'dcwy xqvr cqjr zojn';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //$mail->Port       = 587; 
     //Recipients
-    $mail->setFrom($c_email_envio, 'Meio Ambiente');
+    $mail->setFrom($c_email_envio, 'pms');
     //echo $c_email;
     //die;
-    $mail->addAddress($c_email, 'Meio Ambiente');     // endereco para onde será enviado
+    $mail->addAddress($c_email, 'pms');     // endereco para onde será enviado
     
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = $c_assunto;
     $mail->Body    = $c_body;
     $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    $mail->send();
+    //echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+//echo "Mensagem enviada com sucesso!";
+
