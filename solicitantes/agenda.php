@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $msg_erro = 'Erro ao agendar: ' . $conection->error;
             break;
         }
+        // Armazena os dados do agendamento na sessão
         $_SESSION['data'] = $c_data;
         $_SESSION['horario'] = $c_horario;
         // Redireciona para a página de finalização
