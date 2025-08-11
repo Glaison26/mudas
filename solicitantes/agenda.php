@@ -17,13 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $msg_erro = 'Data de agendamento não pode ser em um final de semana.';
             break;
         }
+        // verifico se data é uma segunda feira
+        if (date('N', strtotime($c_data)) == 1) {
+            $msg_erro = 'Data de agendamento não pode ser em uma segunda feira. O Bosque Municipal funciona de terça a sexta.';
+            break;
+        }
         // validação do campo horario
         if (empty($_POST['horario'])) {
             $msg_erro = 'Horário de agendamento é obrigatório.';
             break;
         }
         $c_horario = $_POST['horario'];
-
         // validação do campo quantidade
         if (empty($_POST['quantidade']) || $_POST['quantidade'] < 1 || $_POST['quantidade'] > 3) {
             $msg_erro = 'Quantidade de mudas deve ser entre 1 e 3.';
