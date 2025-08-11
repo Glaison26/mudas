@@ -70,7 +70,16 @@ $result = $conection->query($sql);
 <!--  front end da aplicação -->
 
 <body>
-   
+    <div class="container -my5">
+        <div style="padding-top:5px">
+            <h3 align="center">Lista de Solicitantes Cadastrados</h3>
+            <div class="panel">
+                <div class="panel-heading">
+
+                    <a class="btn btn btn-sm" href="\mudas\cadastros\menu.php"><img src="\mudas\imagens\saida.png" alt="" width="25" height="25"> Voltar</a>
+                </div>
+            </div>
+        </div>
 
         <div style="padding-top:15px;padding-left:20px;">
             <table class="table table display table-active tablista">
@@ -101,7 +110,11 @@ $result = $conection->query($sql);
                                     <td>$c_linha[cpf]</td>
                                     <td>$c_linha[email]</td>
                                     <td>
-                                       <a class='btn' href='javascript:func()'onclick='confirmacao($c_linha[id])'><span class='glyphicon glyphicon-trash'></span></a>
+                                    
+                                    <a class='btn' href='/mudas/cadastros/cadastro_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-edit'></span></a>
+                                     &nbsp;&nbsp;   
+                                    <a class='btn' href='javascript:func()'onclick='confirmacao($c_linha[id])'><span class='glyphicon glyphicon-trash'></span></a>
+                                       
                                     </td>
 
                                 </tr>

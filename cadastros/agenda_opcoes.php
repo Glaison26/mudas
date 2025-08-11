@@ -13,13 +13,16 @@ if ((isset($_POST["btnpesquisa"])) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
     $d_data1 = date("Y-m-d", strtotime(str_replace('/', '-', $d_data1)));
     $d_data2 = $_POST['data2'];
     $d_data2 = date("Y-m-d", strtotime(str_replace('/', '-', $d_data2)));
-    
+
     // montagem do sql para pesquisa na agenda por período informado
-    $c_sql = "SELECT * FROM agenda WHERE agenda.data BETWEEN '$d_data1' AND '$d_data2' ORDER BY agenda.data, agenda.horario ASC";
-    // chamo pagina com os dados a serem selecionados passando a string sql
+    $c_sql = "SELECT agenda.id, solicitantes.nome, solicitantes.telefone, agenda.`data`, agenda.hora, agenda.numero_mudas FROM agenda
+    JOIN solicitantes on agenda.id_solicitante=solicitantes.id
+    WHERE agenda.data BETWEEN '$d_data1' AND '$d_data2'
+    ORDER BY agenda.`data`, agenda.hora";
+    // guardo a string sql na session para ser usada na pagina de listagem
     $_SESSION['sql'] = $c_sql;
-    $_SESSION['c_data1']=$d_data1;
-    $_SESSION['c_data2']=$d_data2;
+    $_SESSION['c_data1'] = $d_data1;
+    $_SESSION['c_data2'] = $d_data2;
     //echo $c_sql;
     header('location: /mudas/cadastros/agenda_lista.php');
 }
@@ -37,7 +40,7 @@ if ((isset($_POST["btnpesquisa"])) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
 
 
 <body>
-   
+
     <div class="content">
 
         <div class="container -my5">
