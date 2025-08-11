@@ -9,7 +9,7 @@ $c_email = $_SESSION['email'];
 $c_dia = $_SESSION['data'];
 $c_data = date("d-m-Y", strtotime(str_replace('/', '-', $c_dia)));
 $c_hora = $_SESSION['horario'];
-// chamo o envio de email ordem de serviço gerada
+// chamo o envio de email para o solicitante
 if (filter_var($c_email, FILTER_VALIDATE_EMAIL)) {
     $c_assunto = "Sua retirada de muda foi agendada com sucesso!<br>";
     $c_body = "E-mail de confirmação.<br><br>";    
