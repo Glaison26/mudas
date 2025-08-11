@@ -17,13 +17,13 @@ $mail = new PHPMailer(true);
 try {
     //Server settings
     //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $c_email_envio = 'glaison26.queiroz@gmail.com';
+    $c_email_envio = 'pms.mudas.meioambiente@gmail.com';
     $mail->CharSet = 'UTF-8';
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'glaison26.queiroz@gmail.com';                     //SMTP username
-    $mail->Password   = 'dcwy xqvr cqjr zojn';                               //SMTP password
+    $mail->Username   = 'pms.mudas.meioambiente@gmail.com';                     //SMTP username
+    $mail->Password   = 'lnsf xnuf uavu sagi';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //$mail->Port       = 587; 

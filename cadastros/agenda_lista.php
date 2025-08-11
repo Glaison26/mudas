@@ -60,19 +60,16 @@ $c_sql = $_SESSION['sql'];
         });
     </script>
 
-    <br>
+   
     <div class="container -my5">
-
-        <div style="padding-top:5px">
-            <h3 align="center">Agenda de Retiradas do Período</h3>
-            <div class="panel">
+        <h3 align="center">Agenda de Retirada de Mudas</h3>
+           <div class="panel">
                 <div class="panel-heading">
 
                     <a class="btn btn btn-sm" href="\mudas\cadastros\menu.php"><img src="\mudas\imagens\saida.png" alt="" width="25" height="25"> Voltar</a>
                 </div>
             </div>
-        </div>
-
+       
         <hr>
         <table class="table table display table-active tabfuncionarios">
             <thead class="thead">
