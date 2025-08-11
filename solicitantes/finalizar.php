@@ -1,7 +1,7 @@
 <?php
 session_start(); // icicio de session
 include("..\interface.php");
-$_SESSION['controle']='N';
+$_SESSION['controle'] = 'N';
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +21,13 @@ $_SESSION['controle']='N';
                 </div>
             </div>
         </div>
+         <hr>
+        <div class="container-fluid" class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+            <br>
+            <a id="agendamento" class="btn btn-primary" href="/mudas/solicitantes/entracpf_agenda.php">
+                <span class="glyphicon glyphicon-calendar"></span> Ir para agendamento de Retirada de Mudas</a>
+        </div>
+       
     </div>
 </body>
 

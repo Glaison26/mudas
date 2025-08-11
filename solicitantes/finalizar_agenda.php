@@ -35,7 +35,7 @@ if (filter_var($c_email, FILTER_VALIDATE_EMAIL)) {
         <div class="row mb-3">
             <div class="container">
                 <div class="alert alert-secondary">
-                    <h3><strong>Sua Retirada de Muda foi agendada com sucesso para do dia <?php echo $c_data ?> às <?php echo $c_hora ?>hs.!!</strong></h3>
+                    <h3><strong>Sua Retirada de Muda foi agendada com sucesso para do dia <?php echo $c_data ?> às <?php echo $c_hora ?>hs.!! Foi enviado e-mail de confirmação.</strong></h3>
                 </div>
             </div>
         </div>

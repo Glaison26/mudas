@@ -29,7 +29,7 @@ $_SESSION['controle']='S';
             <div class="container-fluid" class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
                 <br>
                 <a id="solicitante" class="btn btn-success" href="/mudas/cadastros/consulta_cadastro.php"><span class="glyphicon glyphicon-edit"></span> Cadastro de Solicitantes</a>
-                <a id="agendamento" class="btn btn-primary" href="/mudas/cadastros/consulta_agenda.php"><span class="glyphicon glyphicon-calendar"></span> Consultar agenda de Retirada de Mudas</a>
+                <a id="agendamento" class="btn btn-primary" href="/mudas/cadastros/agenda_opcoes.php"><span class="glyphicon glyphicon-calendar"></span> Consultar agenda de Retirada de Mudas</a>
 
             </div>
         </nav>

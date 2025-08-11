@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Cep (*)</label>
                 <div class="col-sm-2">
-                    <input type="text" maxlength="120" class="form-control" name="cep" value="<?php echo $c_cep; ?>" required>
+                    <input type="text" maxlength="11" class="form-control" name="cep" value="<?php echo $c_cep; ?>" required>
                 </div>
                 <label class="col-sm-2 col-form-label">Estado (*)</label>
                 <div class="col-sm-2">
