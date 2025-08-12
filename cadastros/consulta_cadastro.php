@@ -75,8 +75,9 @@ $result = $conection->query($sql);
             <h3 align="center">Lista de Solicitantes Cadastrados</h3>
             <div class="panel">
                 <div class="panel-heading">
-
+                    <a class='btn btn btn-sm' class="btn btn-primary" href='\mudas\cadastros\gera_xls.php'><img src='\parque\imagens\excell.png' alt='' width='25' height='25'> Gerar Planilha</a>
                     <a class="btn btn btn-sm" href="\mudas\cadastros\menu.php"><img src="\mudas\imagens\saida.png" alt="" width="25" height="25"> Voltar</a>
+                    
                 </div>
             </div>
         </div>
